@@ -2,9 +2,9 @@
     <item>
         <shape android:shape="rectangle">
             <!--apply button background transparent, full opacity-->
-            <solid android:color="#D0D0D0"/>
+            <solid android:color="@color/colorGrayButton"/>
             <!--make button border solid color, nontransparent-->
-            <stroke android:color="#D0D0D0" android:width="3dp"/>
+            <stroke android:color="@color/colorGrayButton" android:width="3dp"/>
             <corners android:radius="2dp"/>
         </shape>
     </item>

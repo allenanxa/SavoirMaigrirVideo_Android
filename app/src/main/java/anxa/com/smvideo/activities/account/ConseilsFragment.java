@@ -95,7 +95,7 @@ public class ConseilsFragment extends Fragment implements View.OnClickListener {
 //                            }
                         }
 
-                        ApplicationData.getInstance().discoverVideoList = videosList;
+                        ApplicationData.getInstance().conseilsVideoList = videosList;
                         VideoHelper.sort("index", videosList);
                         videosList.get(0).IsSelected = true;
                         adapter.updateItems(videosList);

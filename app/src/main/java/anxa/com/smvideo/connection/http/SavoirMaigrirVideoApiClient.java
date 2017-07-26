@@ -59,6 +59,11 @@ public class SavoirMaigrirVideoApiClient {
             builder.appendQueryParameter("regId", String.valueOf(command.RegId));
         }
 
+        if(command.ApplicationId > 0)
+        {
+            builder.appendQueryParameter("applicationId", String.valueOf(command.ApplicationId));
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(httpMethod);
         stringBuilder.append(apiName);
@@ -69,9 +74,12 @@ public class SavoirMaigrirVideoApiClient {
         if(command.RegId > 0){
             stringBuilder.append(String.valueOf(command.RegId));
         }
+
         stringBuilder.append(SavoirMaigrirVideoConstants.SHARED_KEY);
 
         String toHash = stringBuilder.toString();
+
+        System.out.println("toHash: " + toHash);
         String sig = null;
         try {
             sig = AppUtil.SHA1(toHash);
@@ -104,6 +112,11 @@ public class SavoirMaigrirVideoApiClient {
             builder.appendQueryParameter("regId", String.valueOf(command.RegId));
         }
 
+        if(command.ApplicationId > 0)
+        {
+            builder.appendQueryParameter("applicationId", String.valueOf(command.ApplicationId));
+        }
+
         Set<String> keys = params.keySet();
         for (String p : keys) {
             if(p != "command"){
@@ -119,6 +132,9 @@ public class SavoirMaigrirVideoApiClient {
         }
         if(command.RegId > 0){
             stringBuilder.append(String.valueOf(command.RegId));
+        }
+        if(command.ApplicationId > 0){
+            stringBuilder.append(String.valueOf(command.ApplicationId));
         }
         stringBuilder.append(SavoirMaigrirVideoConstants.SHARED_KEY);
 

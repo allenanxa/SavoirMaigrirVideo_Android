@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import anxa.com.smvideo.ApplicationData;
+import anxa.com.smvideo.contracts.CoachingVideosContract;
 import anxa.com.smvideo.contracts.VideoContract;
 
 /**
@@ -21,12 +22,32 @@ public class VideoHelper {
         }
     };
 
+    static Comparator<CoachingVideosContract> indexComparatorCoaching = new Comparator<CoachingVideosContract>() {
+        @Override
+        public int compare(CoachingVideosContract o1, CoachingVideosContract o2) {
+            return Integer.valueOf(o1.Index).compareTo(o2.Index);
+        }
+    };
+
     public static void sort(final String field, List<VideoContract> itemLocationList) {
 
         final Comparator<VideoContract> comparator;
 
         if(field.toLowerCase().equals("index")) {
             comparator = indexComparator;
+        }  else {
+            throw new IllegalArgumentException("Comparator not found for " + field);
+        }
+
+        Collections.sort(itemLocationList, comparator);
+    }
+
+    public static void sortCoachingVideos(final String field, List<CoachingVideosContract> itemLocationList) {
+
+        final Comparator<CoachingVideosContract> comparator;
+
+        if(field.toLowerCase().equals("index")) {
+            comparator = indexComparatorCoaching;
         }  else {
             throw new IllegalArgumentException("Comparator not found for " + field);
         }

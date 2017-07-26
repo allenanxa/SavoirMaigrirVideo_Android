@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/dark_gray_bg_bilan">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:text="@string/bilan_results_title"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/results_progress01" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dietProfileResultsPage1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/resultsTop1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewGreeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/bilan_results_text1_1"
+                android:textColor="@color/gray_text_bilan" />
+
+            <TextView
+                android:id="@+id/textViewProgramme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/bilan_results_text1_2"
+                android:textColor="@color/gray_text_bilan" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/bilan_results_text1_3"
+                android:textColor="@color/gray_text_bilan" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/results01_fig01" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webViewResultsVideo"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_below="@+id/resultsTop1"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/results01_sign" />
+
+            <Button
+                android:id="@+id/buttonToResultsPage2"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_orange_bilanminceur"
+                android:tag="buttonToResultsPage2"
+                android:text="@string/bilan_results_continue"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dietProfileResultsPage2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textViewResultPage2Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
+            android:text="TextView"
+            android:textColor="@color/gray_text_bilan"
+            android:textSize="13dp" />
+
+        <LinearLayout
+            android:id="@+id/dietProfileResultsGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewResultPage2Content"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+            <RelativeLayout
+                android:id="@+id/dietProfileResults_rl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageViewGenderGraph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/results02_female" />
+
+                <TextView
+                    android:id="@+id/textViewCurrentWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="170kg"
+                    android:textColor="#f2680d"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewTargetWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="221dp"
+                    android:layout_marginTop="68dp"
+                    android:text="150kg"
+                    android:textColor="#f2680d"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewCurrentIMC"
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:gravity="center"
+                    android:text="IMC:22,1"
+                    android:textColor="@color/gray_text_bilan"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewAverageIMC"
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:gravity="center"
+                    android:text="21,0"
+                    android:textColor="@color/gray_text_bilan"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewTargetIMC"
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:gravity="center"
+                    android:text="19,78"
+                    android:textColor="@color/gray_text_bilan"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewMyIMC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dietProfileResultsGraph"
+            android:padding="10dp"
+            android:text="@string/bilan_results_bmi"
+            android:textColor="@color/gray_text_bilan"
+            android:textSize="12dp" />
+
+        <RelativeLayout
+            android:id="@+id/myIMC_arrow_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMyIMC">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/results02_bar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <View
+                        android:id="@+id/currentIMC_dummy1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:id="@+id/currentIMC_dummy2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:id="@+id/currentIMC_dummy3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/arrowCurrentIMC"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/uparrow_red"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/textViewCurrentIMCGraph"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="21,1"
+                            android:textColor="@color/gray_text_bilan"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <View
+                        android:id="@+id/targetIMC_dummy1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:id="@+id/targetIMC_dummy2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:id="@+id/targetIMC_dummy3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/arrowTargetIMC"
+                            android:layout_width="30dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/uparrow_green"
+                            android:text="" />
+
+                        <TextView
+                            android:id="@+id/textViewTargetIMCGraph"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="19,8"
+                            android:textColor="@color/gray_text_bilan"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/textViewTargetIMCGraph"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="19,8"-->
+            <!--android:textColor="@color/gray_text_bilan"-->
+            <!--android:textStyle="bold" />-->
+            <!--</LinearLayout>-->
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonReturnToResultsPage1"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginStart="28dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:tag="buttonReturnToResultsPage1"
+                    android:text="@string/bilan_results_back"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonToResultsPage3"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginRight="28dp"
+                    android:background="@drawable/button_orange_bilanminceur"
+                    android:tag="buttonToResultsPage3"
+                    android:text="@string/bilan_results_continue"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dietProfileResultsPage3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/dietProfileResults3_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewQ3Result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="textViewQ3Result"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/bilan_results_text3_1"
+                android:textColor="@color/gray_text_bilan" />
+
+            <TextView
+                android:id="@+id/textViewTestimonialTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="textViewTestimonialTitle1"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webViewResultsTestimonialVideo1"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_below="@+id/dietProfileResults3_ll"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <LinearLayout
+            android:id="@+id/dietProfileResults3_ll3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/webViewResultsTestimonialVideo1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.3"
+                android:scaleType="fitCenter"
+                android:src="@drawable/results03_fig1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text3_3_1"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text3_3_2"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text3_3_3"
+                    android:textColor="@color/gray_text_bilan" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonReturnToResultsPage2"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:tag="buttonReturnToResultsPage2"
+                    android:text="@string/bilan_results_back"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonToResultsPage4"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_orange_bilanminceur"
+                    android:tag="buttonToResultsPage4"
+                    android:text="@string/bilan_results_continue"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dietProfileResultsPage4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/dietProfile_results4_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/bilan_results_text4_1"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/bilan_results_text4_2"
+                android:textColor="@color/gray_text_bilan" />
+
+            <TextView
+                android:id="@+id/textViewTestimonialTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="textViewTestimonialTitle2"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webViewResultsTestimonialVideo2"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_below="@+id/dietProfile_results4_ll"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/webViewResultsTestimonialVideo2"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="0.3"
+                android:scaleType="fitCenter"
+                android:src="@drawable/results04_fig1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text4_3"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text4_4"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text4_5"
+                    android:textColor="@color/gray_text_bilan" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonReturnToResultsPage3"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:tag="buttonReturnToResultsPage3"
+                    android:text="@string/bilan_results_back"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonToResultsPage5"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_orange_bilanminceur"
+                    android:tag="buttonToResultsPage5"
+                    android:text="@string/bilan_results_continue"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dietProfileResultsPage5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/dietProfileResultsPage5_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewQ4ResultTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="textViewQ4ResultTitle"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewQ4ResultContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="textViewQ4ResultContent"
+                android:textColor="@color/gray_text_bilan" />
+
+            <TextView
+                android:id="@+id/textViewTestimonialTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="textViewTestimonialTitle3"
+                android:textColor="@color/gray_text_bilan"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webViewResultsTestimonialVideo3"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_below="@+id/dietProfileResultsPage5_ll"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/webViewResultsTestimonialVideo3"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_weight="3"
+                android:scaleType="fitCenter"
+                android:src="@drawable/results05_fig1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text5_1"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text5_2"
+                    android:textColor="@color/gray_text_bilan" />
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_results_text5_3"
+                    android:textColor="@color/gray_text_bilan" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonReturnToResultsPage4"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_orange_bilanminceur"
+                    android:tag="buttonReturnToResultsPage4"
+                    android:text="@string/bilan_results_back"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/buttonToResultsPage6"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/button_lightgray_bilanminceur"
+                    android:tag="buttonToResultsPage6"
+                    android:text="@string/bilan_results_continue"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dietProfileResultsPage6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:weightSum="10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/results06_coachpic" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:layout_marginStart="17dp"
+                android:layout_toEndOf="@+id/imageView"
+                android:layout_toRightOf="@+id/imageView"
+                android:text="@string/bilan_results_text6_1"
+                android:textColor="@color/gray_text_bilan"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8">
+
+            <TextView
+                android:id="@+id/textViewResultPage6Content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:text="@string/bilan_results_text6_2"
+                android:textColor="@color/gray_text_bilan"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewResultPage6Content1"
+                android:layout_margin="10dp"
+                android:text="@string/bilan_results_text6_3"
+                android:textColor="@color/gray_text_bilan"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textViewResultPage6Content2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView17"
+                android:layout_margin="10dp"
+                android:text="@string/bilan_results_text6_4"
+                android:textColor="@color/gray_text_bilan"
+                android:textSize="12dp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/buttonSubscribe"
+                android:layout_width="270dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_orange_bilanminceur"
+                android:tag="btnjeMAbone"
+                android:text="@string/bilan_subscribe_btn"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

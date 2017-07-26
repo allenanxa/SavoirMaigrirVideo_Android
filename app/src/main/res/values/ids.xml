@@ -2,4 +2,5 @@
 <resources>
     <item name="recipe_id" type="id" />
     <item name="video_id" type="id" />
+    <item name="week_id" type="id" />
 </resources>

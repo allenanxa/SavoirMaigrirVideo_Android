@@ -33,7 +33,7 @@ import anxa.com.smvideo.ui.RecipesListAdapter;
  * Created by angelaanxa on 5/24/2017.
  */
 
-public class RecipesActivity extends Fragment implements View.OnClickListener{
+public class RecipesActivity extends Fragment implements View.OnClickListener {
 
     private CustomListView recipesListView;
     private RecipesListAdapter adapter;
@@ -60,71 +60,74 @@ public class RecipesActivity extends Fragment implements View.OnClickListener{
         recipesListView = (CustomListView) mView.findViewById(R.id.recipesListView);
         recipesList = new ArrayList<RecipeContract>();
 
+        if (ApplicationData.getInstance().accountType.equalsIgnoreCase("free")){
+            ((TextView) (mView.findViewById(R.id.header_right_tv))).setVisibility(View.VISIBLE);
+        }else{
+            ((TextView) (mView.findViewById(R.id.header_right_tv))).setVisibility(View.INVISIBLE);
+        }
+
 
         PopulateList();
 
         return mView;
 
     }
-public  void PopulateList()
-{
-    //ui
 
-    recipesList = new ArrayList<RecipeContract>();
+    public void PopulateList() {
+        //ui
+        recipesList = new ArrayList<RecipeContract>();
 
-    if (adapter == null) {
-        adapter = new RecipesListAdapter(getActivity(), recipesList, this);
-    }
-
-    caller = new ApiCaller();
-
-
-
-    if (ApplicationData.getInstance().recipeList != null && ApplicationData.getInstance().recipeList.size() > 0) {
-        AddOnClickListener();
-        recipesList = ApplicationData.getInstance().recipeList;
-        List<RecipeContract> currentViewRecipeList = new ArrayList<>();
-        for (RecipeContract r : recipesList) {
-            if (r.RecipeType == RecipeContract.RecipeTypeEnum.Entree.getNumVal()) {
-                currentViewRecipeList.add(r);
-            }
+        if (adapter == null) {
+            adapter = new RecipesListAdapter(getActivity(), recipesList, this);
         }
-        recipesListView.setAdapter(adapter);
-        adapter.updateItems(currentViewRecipeList);
-    } else {
-        //api call
-        caller.GetFreeRecipes(new AsyncResponse() {
 
-            @Override
-            public void processFinish(Object output) {
-                AddOnClickListener();
-                if (output != null) {
+        caller = new ApiCaller();
 
-                    RecipeResponseContract c = (RecipeResponseContract) output;
-                    //INITIALIZE ALL ONCLICK AND API RELATED PROCESS HERE TO AVOID CRASHES
-
-                    if (c != null && c.Data != null && c.Data.Recipes != null) {
-
-
-                        int unreadCount = 0;
-
-                        recipesList = (List<RecipeContract>) c.Data.Recipes;
-                        ApplicationData.getInstance().recipeList = recipesList;
-
-                        List<RecipeContract> currentViewRecipeList = new ArrayList<RecipeContract>();
-                        for (RecipeContract r : recipesList) {
-                            if (r.RecipeType == RecipeContract.RecipeTypeEnum.Entree.getNumVal()) {
-                                currentViewRecipeList.add(r);
-                            }
-                        }
-                        recipesListView.setAdapter(adapter);
-                        adapter.updateItems(currentViewRecipeList);
-                    }
+        if (ApplicationData.getInstance().recipeList != null && ApplicationData.getInstance().recipeList.size() > 0) {
+            AddOnClickListener();
+            recipesList = ApplicationData.getInstance().recipeList;
+            List<RecipeContract> currentViewRecipeList = new ArrayList<>();
+            for (RecipeContract r : recipesList) {
+                if (r.RecipeType == RecipeContract.RecipeTypeEnum.Entree.getNumVal()) {
+                    currentViewRecipeList.add(r);
                 }
             }
-        });
+            recipesListView.setAdapter(adapter);
+            adapter.updateItems(currentViewRecipeList);
+        } else {
+            //api call
+            caller.GetFreeRecipes(new AsyncResponse() {
+
+                @Override
+                public void processFinish(Object output) {
+                    AddOnClickListener();
+                    if (output != null) {
+
+                        RecipeResponseContract c = (RecipeResponseContract) output;
+                        //INITIALIZE ALL ONCLICK AND API RELATED PROCESS HERE TO AVOID CRASHES
+
+                        if (c != null && c.Data != null && c.Data.Recipes != null) {
+
+
+                            int unreadCount = 0;
+
+                            recipesList = (List<RecipeContract>) c.Data.Recipes;
+                            ApplicationData.getInstance().recipeList = recipesList;
+
+                            List<RecipeContract> currentViewRecipeList = new ArrayList<RecipeContract>();
+                            for (RecipeContract r : recipesList) {
+                                if (r.RecipeType == RecipeContract.RecipeTypeEnum.Entree.getNumVal()) {
+                                    currentViewRecipeList.add(r);
+                                }
+                            }
+                            recipesListView.setAdapter(adapter);
+                            adapter.updateItems(currentViewRecipeList);
+                        }
+                    }
+                }
+            });
+        }
     }
-}
 
     @Override
     public void onClick(View v) {
@@ -174,6 +177,7 @@ public  void PopulateList()
             FragmentManager fragmentManager = getFragmentManager();
             Bundle bundle = new Bundle();
             bundle.putString("RECIPE_ID", String.valueOf(recipeId));
+            bundle.putString("SOURCE", "fromRecipes");
             fragment.setArguments(bundle);
             fragmentManager.beginTransaction().add(R.id.mainContent, fragment, "RECIPE_FRAGMENT").addToBackStack(null)
                     .commit();
@@ -185,7 +189,7 @@ public  void PopulateList()
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
-        if(requestCode == 1){
+        if (requestCode == 1) {
 
         }
     }

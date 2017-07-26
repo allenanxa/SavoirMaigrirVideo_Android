@@ -51,12 +51,13 @@
                     android:text="@string/mon_compte_prenom" />
 
                 <EditText
+                    android:id="@+id/mon_name_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
-                    android:text="@string/mon_compte_prenom"
+                    android:hint="@string/mon_compte_prenom"
                     android:background="@android:color/transparent"/>
 
             </TableRow>
@@ -77,13 +78,14 @@
                     android:text="@string/mon_compte_sexe" />
 
 
-                <EditText
+                <TextView
+                    android:id="@+id/mon_sexe_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
-                    android:text="@string/mon_compte_sexe"
+                    android:hint="@string/mon_compte_sexe"
                     android:background="@android:color/transparent"/>
 
             </TableRow>
@@ -118,13 +120,15 @@
 
 
                 <EditText
+                    android:id="@+id/mon_weight_init_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
                     android:text="80,00"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    android:inputType="numberDecimal"/>
 
             </TableRow>
 
@@ -145,13 +149,15 @@
 
 
                 <EditText
+                    android:id="@+id/mon_weight_target_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
                     android:text="60,00"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    android:inputType="numberDecimal"/>
 
             </TableRow>
 
@@ -172,13 +178,15 @@
 
 
                 <EditText
+                    android:id="@+id/mon_height_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
                     android:text="176"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    android:inputType="numberDecimal"/>
 
             </TableRow>
 
@@ -211,14 +219,16 @@
                     android:text="@string/mon_compte_plans_repas" />
 
 
-                <EditText
+                <TextView
+                    android:id="@+id/mon_plan_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
                     android:text="Classique"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    android:inputType="none"/>
 
             </TableRow>
 
@@ -238,14 +248,16 @@
                     android:text="@string/mon_compte_niveau_calorique" />
 
 
-                <EditText
+                <TextView
+                    android:id="@+id/mon_calories_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="right"
                     android:text="900 kcal"
-                    android:background="@android:color/transparent"/>
+                    android:background="@android:color/transparent"
+                    android:inputType="none"/>
 
             </TableRow>
 
@@ -265,7 +277,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
-                android:padding="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:weightSum="5">
 
                 <TextView
@@ -285,13 +299,18 @@
                 android:weightSum="5">
 
                 <EditText
+                    android:id="@+id/mon_email_et"
                     style="@style/MonCompteHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:padding="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="email@domaine.com"
-                    android:background="@color/monCompteHeader"/>
+                    android:background="@color/monCompteHeader"
+                    android:inputType="textEmailAddress"/>
 
             </TableRow>
 

@@ -48,8 +48,12 @@
     <string name="menu_account_poids">Suivi Du Poids</string>
     <string name="menu_account_compte">Mon Compte</string>
 
+    <string name="lost_weight_text">Vous avez perdu </string>
+
     <string name="coaching_header">Coaching - Semane %d</string>
+    <string name="coaching_archive_week">Semane %d</string>
     <string name="coaching_header_right">Archive</string>
+    <string name="coaching_broadcast_string">Archive_week_selected</string>
 
     <!--account mon compte-->
     <string name="mon_compte_profil">PROFIL</string>
@@ -92,5 +96,120 @@
     <string name="mon_compte_alertes_vos_plans">Vos plans de repas sont envoyés chaque vendredi</string>
 
     <string name="mon_compte_save">Sauvegarder</string>
+
+    <!--Repas-->
+    <string name="repas_header_meal_plan">Vous suivez actuellement le programme \n#program a #calorie/jour</string>
+    <string name="repas_breakfast">Petit-Déjeuner</string>
+    <string name="repas_lunch">Déjeuner</string>
+    <string name="repas_dinner">Diner</string>
+    <string name="repas_related_recipe">Recettes associéss</string>
+    <string name="repas_footer">Pour recevoir chaque semaine vos plans de repas et listes de courses par Email, activez l\'alerte dans Mon compte</string>
+
+
+    <!--Suivi du Poids-->
+    <string name="WEIGHT_GRAPH_WEIGHT_TIP">Notre conseil: pesez-vous régulièrement pour mettre votre courbe de poids à jour !</string>
+    <string name="WEIGHT_GRAPH_ENTER_CURRENT_WEIGHT">Entrez votre poids actuel</string>
+    <string name="btn_submit">Poster</string>
+    <string name="WEIGHT_GRAPH_TARGET_WEIGHT">Poids visé</string>
+    <string name="WEIGHT_GRAPH_CURRENT_BMI">IMC actuel</string>
+    <string name="WEIGHT_GRAPH_WEIGHT_LOST">Poids perdu</string>
+    <string name="WEIGHT_GRAPH_WEIGHT_LOG">Historique</string>
+    <string name="NO_DATA">Pas de données</string>
+    <string name="WEIGHT_GRAPH_STEPS_LOG">Historique</string>
+    <string name="WEIGHT_GRAPH_DATE">Date</string>
+    <string name="WEIGHT_GRAPH_SEE_MORE">Voir plus</string>
+    <string name="WEIGHT_GRAPH_DEVICE">Appareil</string>
+    <string name="WEIGHT_GRAPH_NO_MORE_CONTENTS_TO_SHOW">Fin du contenu</string>
+    <string name="WEIGHT_GRAPH_EDIT_WEIGHT">Editer de Poids</string>
+    <string name="WEIGHT_BUTTON">Courbe de Poids</string>
+    <string name="WEIGHT_GRAPH_NO_DATA">Poids actuel: Pas de données</string>
+    <string name="WEIGHT_GRAPH_CURRENT_WEIGHT_ASOF">Poids actuel: %@ kg le</string>
+    <string name="btn_edit">Editer</string>
+    <string name="btn_delete">Supprimer</string>
+    <string name="WEIGHT_GRAPH_BROADCAST_DELETE">WEIGHT_GRAPH_DELETE</string>
+    <string name="WEIGHT_GRAPH_BROADCAST_EDIT">WEIGHT_GRAPH_EDIT</string>
+    <string name="ALERTMESSAGE_DELETE_MEAL">Voulez-vous vraiment supprimer cette entrée ?</string>
+    <string name="btn_no">Non</string>
+    <string name="btn_yes">Oui</string>
+    <string name="ALERTMESSAGE_FIRSTNAME_EMPTY">Oops… Vous avez oublié d\'entrer votre prénom.</string>
+    <string name="ALERTMESSAGE_HEIGHT">Oops… Vous avez oublié d\'entrer votre taille.</string>
+    <string name="ALERTMESSAGE_CURRENTWEIGHT">Oops… Vous avez oublié d\'entrer votre poids actuel.</string>
+    <string name="ALERTMESSAGE_TARGETWEIGHT">Oops… Vous avez oublié d\'entrer le poids que vous visez.</string>
+    <string name="ALERTMESSAGE_EMAIL">Le format de votre e-mail est erronée. Veuillez entrer une adresse email valide .</string>
+
+
+    <!--Bilan Minceur-->
+    <string name="bilan_broadcast_subscribe">SUBSCRIBE_BILAN</string>
+    <string name="bilan_subscribe_btn">Je m\'abone</string>
+    <string name="bilan_continue">Je continue</string>
+    <string name="bilan_check_email">Vérifiez votre adresse e-mail et cliquez sur « Accédez à votre bilan ! » pour recevoir votre bilan minceur personnalisé par e-mail.</string>
+    <string name="bilan_check_number">Cochez pour un numéro étranger</string>
+    <string name="bilan_check_number_attention">Attention, votre numéro doit commencer par 01 à 09 et comporter 10 chiffres sans espace. Cochez la case si le numéro est étranger.</string>
+    <string name="bilan_tel_number">Numéro de téléphone</string>
+    <string name="bilan_enter_name">Merci de saisir votre nom.</string>
+    <string name="bilan_name">Nom</string>
+    <string name="bilan_enter_firstname">Merci de saisir votre prénom.</string>
+    <string name="bilan_firstname">Prénom</string>
+    <string name="bilan_email_intro">Votre adresse e-mail nous permet de vous envoyer gratuitement votre bilan par e-mail.Cela reste une information confidentielle.</string>
+    <string name="bilan_email_alert">Vous devez entrer un email valide</string>
+    <string name="bilan_email">Adresse E-mail</string>
+    <string name="bilan_termine">Je termine mon bilan&#032;&#032;&#032;&#032;&#032;&#032;&#032;></string>
+    <string name="bilan_target_weight_alert">Merci de préciser votre poids souhaité.</string>
+    <string name="bilan_what_ideal_weight">Quel est votre poids idéal ?</string>
+    <string name="bilan_current_weight_alert">Merci de préciser votre poids.</string>
+    <string name="bilan_what_current_weight">Quel est votre poids ?</string>
+    <string name="bilan_height_alert">Merci de préciser votre taille.</string>
+    <string name="bilan_what_height">Quelle est votre taille ?</string>
+    <string name="bilan_gender_male">Je suis un homme</string>
+    <string name="bilan_gender_female">Je suis un femme</string>
+    <string name="bilan_what_gender">Etes-vous un homme ou une femme ?</string>
+    <string name="bilan_what_information">Vos informations personnelles</string>
+    <string name="bilan_start_losing_1kg">Commencez vore analyse minceur pour perdre 1kg par semaine</string>
+    <string name="bilan_start_intro">Votre bilan minceur perssonnalise gratuit</string>
+
+    <!--Bilan Results-->
+    <string name="bilan_results_title">Vos résultats</string>
+    <string name="bilan_results_text1_1">Bravo, je vais vous aider à perdre ces #TargetWeightLoss kilos et à #Q6Result</string>
+    <string name="bilan_results_text1_2">En suivant mon programme, vous allez bénéficier de tous les outils et conseils pour atteindre votre objectif de #TargetWeight kilos. Cette méthode de rééquilibrage alimentaire sera bénéfique pour votre santé et complètement adaptée à votre profil.</string>
+    <string name="bilan_results_text1_3">Regardez la vidéo personnalisée de votre bilan minceur :</string>
+
+    <string name="bilan_results_continue">Continuer</string>
+    <string name="bilan_results_back">Retour</string>
+    <string name="bilan_results_bmi">Votre IMC : Comme vous pesez #CurrentWeight kg pour #Height cm, votre Indice de Masse Corporelle (IMC) est actuellement de #CurrentIMC.</string>
+
+    <string name="bilan_results_text3_1">Même si vous souhaitez suivre un régime amaigrissant, ne croyez pas que vous allez devoir changer toutes vos habitudes : vous devez les adapter certes, mais certainement pas les changer du tout au tout.</string>
+    <string name="bilan_results_text3_3_1">- Des plans de repas sans privations ni aliments interdits</string>
+    <string name="bilan_results_text3_3_2">- Le Jeune Cohen 16H pour accélérer votre perte de poids</string>
+    <string name="bilan_results_text3_3_3">- Des techniques pour rattraper les écarts en douceur</string>
+
+    <string name="bilan_results_text4_1">Vous allez durablement améliorer votre santé</string>
+    <string name="bilan_results_text4_2">En France, 15 millions de personnes sont en surpoids et 6.9 millions sont en situation d\’obésité, soit au total 32.3%% de la population. Si la tendance se poursuit, la population en situation d\’obésité en France pourrait atteindre 30%% d’ici 30 ans... et ainsi rejoindre le niveau des Etats-Unis.</string>
+    <string name="bilan_results_text4_3">- Les conseils vidéo quotidiens de Jean-Michel Cohen</string>
+    <string name="bilan_results_text4_4">- Des résultats scientifiquement prouvés (Etude 2014 SEPREM*)</string>
+    <string name="bilan_results_text4_5">- Des outils pratiques pour réapprendre à manger et rééquilibrer votre alimentation</string>
+
+    <string name="bilan_results_text5_1">- Plus de confiance grâce à l\'accompagnement de votre diététicienne</string>
+    <string name="bilan_results_text5_2">- Des résultats scientifiquement prouvés (Etude 2014 SEPREM*)</string>
+    <string name="bilan_results_text5_3">- Des outils pratiques pour réapprendre à manger et rééquilibrer votre alimentation</string>
+
+    <string name="bilan_results_text6_1">La méthode Savoir Maigrir correspond précisément à vos besoins.</string>
+    <string name="bilan_results_text6_2">Vous avez #TargetWeightLoss kilos à perdre et je vous recommande mon programme qui va vous permettre de perdre tranquillement ces kilos puis de profiter d\'une période de stabilisation pour muscler votre corps ! Rappelez-vous que votre succès est important pour votre santé mais aussi pour votre bien être et votre confiance en vous. Savoir maigrir est bien plus efficace qu\'un régime : c\'est le rééquilibrage alimentaire qui vous servira tout au long de votre vie.</string>
+    <string name="bilan_results_text6_3">N\'hésitez pas à nous poser des questions car, avec toute mon équipe, nous sommes là pour vous aider et vous conseiller !</string>
+    <string name="bilan_results_text6_4">Vous pouvez avoir une confiance totale dans la méthode Savoir Maigrir, #firstname, et nous vous le prouvons en prenant cet engagement : si vous n\'avez pas pu atteindre votre juste poids à la fin du programme, nous nous engageons à vous le rembourser intégralement.</string>
+
+    <string name="bilan_greetings_text6_1">Vous pouvez avoir une confiance totale dans la méthode Savoir Maigrir </string>
+    <string name="bilan_greetings_text6_2">, et nous vous le prouvons en prenant cet engagement : si vous n\'avez pas pu atteindre votre juste poids à la fin du programme, nous nous engageons à vous le rembourser intégralement.</string>
+
+    <string name="bilan_results_weight_text6_1">kilos à perdre et je vous recommande mon programme qui va vous permettre de perdre tranquillement ces kilos puis de profiter d\'une période de stabilisation pour muscler votre corps ! Rappelez-vous que votre succès est important pour votre santé mais aussi pour votre bien être et votre confiance en vous. Savoir maigrir est bien plus efficace qu\'un régime : c\'est le rééquilibrage alimentaire qui vous servira tout au long de votre vie.</string>
+
+    <string name="bilan_questions_intro">Perdez jusqu\'à 10 kilos en 3 mois sans jamais vous priver :</string>
+    <string name="bilan_questions_intro_2">Réalisez maintenant votre analyse minceur gratuit ...</string>
+
+    <!--Youtube-->
+    <string name="player_error">Error initializing YouTube player: %s</string>
+
+
+
+
 
 </resources>

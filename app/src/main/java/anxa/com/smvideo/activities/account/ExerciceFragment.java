@@ -94,7 +94,7 @@ public class ExerciceFragment extends Fragment implements View.OnClickListener {
 //                            }
                         }
 
-                        ApplicationData.getInstance().discoverVideoList = videosList;
+                        ApplicationData.getInstance().exerciseVideoList = videosList;
                         VideoHelper.sort("index", videosList);
                         videosList.get(0).IsSelected = true;
                         adapter.updateItems(videosList);

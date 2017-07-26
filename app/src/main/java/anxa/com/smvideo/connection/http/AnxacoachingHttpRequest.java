@@ -33,6 +33,8 @@ public class AnxacoachingHttpRequest {
 
     public String makeHttpRequest(String url, String method, String json)  {
 
+        System.out.println("makeHttpRequest: " + url + " method: " + method + "json: " + json);
+
         if (method.equals("POST")) {
             // request method is POST
             try {

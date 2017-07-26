@@ -42,8 +42,6 @@ public class RecipeDownloadImageAsync extends AsyncTask<String, Void, Bitmap> {
             if (!ApplicationData.getInstance().recipePhotoList.containsKey(String.valueOf(Id))) {
             InputStream in = new java.net.URL(urldisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
-
-
                 ApplicationData.getInstance().recipePhotoList.put(String.valueOf(Id), mIcon11);
             }else{
                 mIcon11 = RecipeHelper.GetRecipeImage(Id);

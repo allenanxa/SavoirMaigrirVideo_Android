@@ -38,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0.8"
                 android:gravity="center_vertical"
                 android:maxLines="4"
@@ -57,6 +57,7 @@
             android:background="@android:color/black">
 
             <TextView
+                android:id="@+id/initial_weight_tv"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginEnd="2dp"
@@ -75,6 +76,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/lost_weight_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -83,6 +85,7 @@
                     android:textSize="12sp" />
 
                 <ProgressBar
+                    android:id="@+id/weight_landing_progressBar"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -95,6 +98,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/target_weight_tv"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_marginEnd="2dp"
@@ -353,5 +357,12 @@
                 android:textSize="12dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/landing_account_progressBar" />
 
 </RelativeLayout>

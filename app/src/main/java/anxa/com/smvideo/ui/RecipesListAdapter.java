@@ -42,6 +42,7 @@ public class RecipesListAdapter extends ArrayAdapter<RecipeContract> implements 
         this.listener = listener;
 
     }
+
     public void updateItems(List<RecipeContract> items) {
         this.items = items;
         notifyDataSetChanged();
@@ -72,17 +73,11 @@ public class RecipesListAdapter extends ArrayAdapter<RecipeContract> implements 
             viewHolder = new ViewHolder();
             viewHolder.recipeImage = (ImageView) row.findViewById(R.id.recipeImage);
             viewHolder.recipeTitle = ((TextView) row.findViewById(R.id.recipeTitle));
-            viewHolder.recipeImageProgress= ((ProgressBar) row.findViewById(R.id.recipeImageProgress));
+            viewHolder.recipeImageProgress = ((ProgressBar) row.findViewById(R.id.recipeImageProgress));
             row.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) row.getTag();
         }
-
-//        int itemCount = items.size() - position;
-//
-//        if (getCount() > position && itemCount == 5) {
-//            System.out.println("getPosition");
-//        }
 
         RecipeContract recipe = (RecipeContract) items.get(position);
         row.setTag(R.id.recipe_id, recipe.Id);
@@ -97,9 +92,10 @@ public class RecipesListAdapter extends ArrayAdapter<RecipeContract> implements 
         if (avatar == null) {
            /* if( !ApplicationData.getInstance().RecipeOngoigImageDownload.contains(recipe.Id)) {
                 ApplicationData.getInstance().RecipeOngoigImageDownload.add(recipe.Id);*/
-                new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipe.ImageUrl);
+            new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).execute(recipe.ImageUrl);
+//                new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipe.ImageUrl);
             //}
-            } else {
+        } else {
             viewHolder.recipeImage.setImageBitmap(avatar);
             viewHolder.recipeImageProgress.setVisibility(View.GONE);
         }
@@ -111,6 +107,7 @@ public class RecipesListAdapter extends ArrayAdapter<RecipeContract> implements 
     private void refreshUI() {
         notifyDataSetChanged();
     }
+
     @Override
     public void onClick(View v) {
         if (v != null) {

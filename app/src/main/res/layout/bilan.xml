@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:windowSoftInputMode="adjustPan">
+    android:windowSoftInputMode="adjustPan"
+    android:background="@drawable/fullbackground">
 
     <include
         android:id="@+id/headermenu"
@@ -11,36 +12,37 @@
         android:layout_width="match_parent"
         android:layout_height="44dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/dietProfileQuestionsLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical"
+        android:background="@drawable/fullbackground"
         android:visibility="visible">
 
         <include
+            android:id="@+id/bilan_mainVideo"
             layout="@layout/main_video"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"/>
 
         <LinearLayout
             android:id="@+id/dietProfileQuestionsHeaderLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:background="@android:color/black"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_below="@+id/bilan_mainVideo">
 
             <TextView
                 android:id="@+id/textViewDietProfileHeader"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:text="Votre bilan minceur perssonnalise gratuit"
-                android:textColor="#FFFFFF"
+                android:text="@string/bilan_start_intro"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -48,27 +50,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Commencez vore analyse minceur pour perdre 1kg par semaine"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
+                android:text="@string/bilan_start_losing_1kg"
+                android:textColor="@android:color/white"
+                android:textSize="12dp"
+                android:paddingBottom="10dp"/>
+
+            <ProgressBar
+                android:id="@+id/questionnaires_progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:clickable="false"
+                android:indeterminate="false"
+                android:max="10"
+                android:paddingBottom="10dp"
+                android:paddingLeft="100dp"
+                android:paddingRight="100dp"
+                android:progress="5"
+                android:progressTint="@color/colorOrangeButton" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/dietProfilVitalStatsHeaderLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:background="@android:color/black"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bilan_mainVideo"
+            android:background="@android:color/transparent"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/textViewDietProfileVSHeader"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:gravity="center"
-                android:text="Perdez jusqu'à 10 kilos en 3 mois sans jamais vous priver :"
-                android:textColor="#FFFFFF"
+                android:text="@string/bilan_questions_intro"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <TextView
@@ -76,19 +95,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Réalisez maintenant votre analyse minceur gratuit ..."
-                android:textColor="#FFFFFF"
+                android:text="@string/bilan_questions_intro_2"
+                android:textColor="@android:color/white"
                 android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/dietProfilPersonalInfoHeaderLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.13"
-            android:background="@android:color/black"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bilan_mainVideo"
+            android:background="@android:color/transparent"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textViewDietProfilePIHeader"
@@ -96,8 +116,8 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Vos informations personnelles"
-                android:textColor="#FFFFFF"
+                android:text="@string/bilan_what_information"
+                android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -105,8 +125,8 @@
         <LinearLayout
             android:id="@+id/dietProfileLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.72"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/dietProfileQuestionsHeaderLayout"
             android:background="@android:color/white"
             android:orientation="vertical"
             android:visibility="visible">
@@ -120,60 +140,72 @@
 
                 <TextView
                     android:id="@+id/textView3"
+                    style="@style/txtBilanGender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Etes-vous un homme ou une femme ?"
-                    android:textColor="#323232" />
+                    android:layout_margin="20dp"
+                    android:text="@string/bilan_what_gender" />
 
-                <ImageButton
-                    android:id="@+id/imgBtnFem"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/imgBtn_gender_ll"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginStart="23dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/gender_woman"
-                    android:tag="imgBtnFem" />
+                    android:layout_below="@id/textView3"
+                    android:gravity="center"
+                    android:paddingBottom="20dp">
 
-                <ImageButton
-                    android:id="@+id/imgBtnMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/textView"
-                    android:layout_alignEnd="@+id/textView2"
-                    android:layout_alignRight="@+id/textView2"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/gender_man"
-                    android:tag="imgBtnMale" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/imgBtnFem"
-                    android:layout_alignRight="@+id/imgBtnFem"
-                    android:layout_below="@+id/imgBtnFem"
-                    android:layout_marginTop="16dp"
-                    android:text="Je suis une femme"
-                    android:textColor="#323232" />
+                        <ImageButton
+                            android:id="@+id/imgBtnFem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textView3"
+                            android:layout_centerVertical="true"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/gender_woman"
+                            android:tag="imgBtnFem" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/textView"
-                    android:layout_alignBottom="@+id/textView"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="38dp"
-                    android:layout_marginRight="38dp"
-                    android:text="Je suis un homme"
-                    android:textColor="#323232" />
+                        <TextView
+                            android:id="@+id/textView"
+                            style="@style/txtBilanPersonalInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bilan_gender_female" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageButton
+                            android:id="@+id/imgBtnMale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/gender_man"
+                            android:tag="imgBtnMale" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/txtBilanPersonalInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bilan_gender_male" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -181,6 +213,7 @@
                 android:id="@+id/dietProfileQuestionsListLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/dietProfileQuestionsHeaderLayout"
                 android:layout_margin="8dp"
                 android:background="@android:color/white"
                 android:orientation="vertical"
@@ -190,11 +223,11 @@
                     android:id="@+id/textViewQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="0.2"
                     android:background="@android:color/white"
                     android:text=""
-                    android:textColor="#323232" />
+                    android:textColor="@color/gray_text_bilan" />
 
                 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/sQuestionsList"
@@ -211,35 +244,45 @@
                 </ScrollView>
             </LinearLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lVitalStats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:background="@android:color/white"
+            android:layout_below="@+id/dietProfilVitalStatsHeaderLayout"
+            android:orientation="vertical"
+            android:visibility="gone">
+
             <LinearLayout
-                android:id="@+id/lVitalStats"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/bilan_what_height"
+                    android:textColor="@color/gray_text_bilan" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-
-                        android:id="@+id/textView32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:text="Quelle est votre taille ?"
-                        android:textColor="#323232" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left">
 
                     <EditText
                         android:id="@+id/editHeight"
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="32dp"
-                        android:layout_marginLeft="38dp"
+                        android:layout_marginLeft="20dp"
                         android:ems="5"
                         android:inputType="numberDecimal"
                         android:maxLength="5"
@@ -251,42 +294,51 @@
                         android:id="@+id/textView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="right"
+                        android:layout_marginLeft="5dp"
                         android:text="cm"
-                        android:textColor="#323232" />
+                        android:textColor="@color/gray_text_bilan" />
+
                 </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewHeightError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bilan_height_alert"
+                android:textColor="@color/red_text_bilan"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textViewHeightError"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Merci de préciser votre taille."
-                    android:textColor="#ff0000"
-                    android:textSize="10dp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:id="@+id/textView38"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/bilan_what_current_weight"
+                    android:textColor="@color/gray_text_bilan" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView38"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:text="Quel est votre poids ?"
-                        android:textColor="#323232" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left">
 
                     <EditText
                         android:id="@+id/editCurrentWeight"
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="32dp"
-                        android:layout_marginLeft="45dp"
+                        android:layout_marginLeft="20dp"
                         android:ems="5"
                         android:inputType="numberDecimal"
                         android:maxLength="5"
@@ -298,41 +350,51 @@
                         android:id="@+id/textView33"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="kilos"
-                        android:textColor="#323232" />
+                        android:textColor="@color/gray_text_bilan" />
+
                 </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewWeightError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bilan_current_weight_alert"
+                android:textColor="@color/red_text_bilan"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textViewWeightError"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Merci de préciser votre poids."
-                    android:textColor="#ff0000"
-                    android:textSize="10dp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:id="@+id/textView39"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@string/bilan_what_ideal_weight"
+                    android:textColor="@color/gray_text_bilan" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView39"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="25dp"
-                        android:text="Quel est votre poids idéal ?"
-                        android:textColor="#323232" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left">
 
                     <EditText
                         android:id="@+id/editIdealWeight"
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="32dp"
-                        android:layout_marginLeft="12dp"
+                        android:layout_marginLeft="20dp"
                         android:ems="5"
                         android:inputType="numberDecimal"
                         android:maxLength="5"
@@ -343,1100 +405,281 @@
                         android:id="@+id/textView37"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="kilos"
-                        android:textColor="#323232" />
+                        android:textColor="@color/gray_text_bilan" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewTargetWeightError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bilan_target_weight_alert"
+                android:textColor="@color/red_text_bilan"
+                android:textSize="10dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnVitalStatsProcess"
+                android:layout_width="270dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/button_orange_bilanminceur"
+                android:tag="btnVitalStatsProcess"
+                android:text="@string/bilan_termine"
+                android:textColor="@android:color/white"
+                android:textSize="14dp"/>
+
+        </LinearLayout>
+
+        <ScrollView android:id="@+id/sPersonalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:layout_below="@+id/dietProfilPersonalInfoHeaderLayout"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/lPersonalInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        style="@style/txtBilanPersonalInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="@string/bilan_email" />
+
+                    <EditText
+                        android:id="@+id/editEmailAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="6"
+                        android:ems="13"
+                        android:gravity="left"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="30"
+                        android:text=""
+                        android:textSize="12dp" />
+
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textViewTargetWeightError"
+                    android:id="@+id/textViewErrorEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Merci de préciser votre poids souhaité."
-                    android:textColor="#ff0000"
+                    android:text="@string/bilan_email_alert"
+                    android:textColor="@color/red_text_bilan"
                     android:textSize="10dp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/btnVitalStatsProcess"
-                    android:layout_width="270dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="70dp"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:tag="btnVitalStatsProcess"
-                    android:text="Je termine mon bilan"
-                    android:textColor="#FFFFFF" />
-            </LinearLayout>
-
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/sPersonalInfo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:visibility="gone">
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/txtBilanNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bilan_email_intro" />
 
                 <LinearLayout
-                    android:id="@+id/lPersonalInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="8dp"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.8"
-                            android:text="Adresse E-mail"
-                            android:textColor="#323232" />
-
-                        <EditText
-                            android:id="@+id/editEmailAddress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="0.2"
-                            android:ems="13"
-                            android:gravity="left"
-                            android:inputType="textEmailAddress"
-                            android:maxLength="30"
-                            android:text=""
-                            android:textSize="12dp" />
-                    </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textViewErrorEmailAddress"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView9"
+                        style="@style/txtBilanPersonalInfo"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Vous devez entrer un email valide"
-                        android:textColor="#ff0000"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
+                        android:layout_weight="4"
+                        android:text="@string/bilan_firstname" />
+
+                    <EditText
+                        android:id="@+id/editFirstname"
+                        android:layout_width="4dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="6"
+                        android:ems="13"
+                        android:gravity="left"
+                        android:inputType="textPersonName"
+                        android:maxLength="20"
+                        android:text=""
+                        android:textColor="@color/gray_text_bilan"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewErrorFirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/bilan_enter_firstname"
+                    android:textColor="@color/red_text_bilan"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView40"
+                        style="@style/txtBilanPersonalInfo"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="7dp"
-                        android:gravity="center"
-                        android:text="Votre adresse e-mail nous permet de vous envoyer gratuitement votre bilan par e-mail.Cela reste une information confidentielle."
-                        android:textColor="#D0D0D0"
-                        android:textSize="8dp" />
+                        android:layout_weight="4"
+                        android:text="@string/bilan_name" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/editSurname"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="6"
+                        android:ems="13"
+                        android:gravity="left"
+                        android:inputType="textPersonName"
+                        android:maxLength="20"
+                        android:text=""
+                        android:textColor="@color/gray_text_bilan"
+                        android:textSize="12dp" />
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.9"
-                            android:text="Prénom"
-                            android:textColor="#323232" />
+                <TextView
+                    android:id="@+id/textViewErrorSurname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/bilan_enter_name"
+                    android:textColor="@color/red_text_bilan"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
-                        <EditText
-                            android:id="@+id/editFirstname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="0.14"
-                            android:ems="13"
-                            android:gravity="left"
-                            android:inputType="textPersonName"
-                            android:maxLength="20"
-                            android:text=""
-                            android:textColor="#323232"
-                            android:textSize="12dp" />
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textViewErrorFirstname"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView41"
+                        style="@style/txtBilanPersonalInfo"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Merci de saisir votre prénom."
-                        android:textColor="#ff0000"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
+                        android:layout_weight="4"
+                        android:text="@string/bilan_tel_number" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:id="@+id/editPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="6"
+                        android:ems="13"
+                        android:gravity="left"
+                        android:inputType="phone"
+                        android:text=""
+                        android:textColor="@color/gray_text_bilan"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewErrorPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/bilan_check_number_attention"
+                    android:textColor="@color/red_text_bilan"
+                    android:textSize="10dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4" />
+
+                    <CheckBox
+                        android:id="@+id/checkBoxPhone"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_gravity="right"
+                        android:layout_weight="6"
+                        android:text="@string/bilan_check_number"
+                        android:textColor="@color/gray_text_bilan"
+                        android:textSize="10dp" />
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textView40"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.9"
-                            android:text="Nom"
-                            android:textColor="#323232" />
-
-                        <EditText
-                            android:id="@+id/editSurname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="0.132"
-                            android:ems="13"
-                            android:gravity="left"
-                            android:inputType="textPersonName"
-                            android:maxLength="20"
-                            android:text=""
-                            android:textColor="#323232"
-                            android:textSize="12dp" />
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textViewErrorSurname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Merci de saisir votre nom."
-                        android:textColor="#ff0000"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView41"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="Numéro de téléphone"
-                            android:textColor="#323232" />
-
-                        <EditText
-                            android:id="@+id/editPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            android:layout_weight="0.39"
-                            android:ems="13"
-                            android:gravity="left"
-                            android:inputType="phone"
-                            android:text=""
-                            android:textColor="#323232"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/textViewErrorPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Attention, votre numéro doit commencer par 01 à 09 et comporter 10 chiffres sans espace. Cochez la case si le numéro est étranger."
-                        android:textColor="#ff0000"
-                        android:textSize="10dp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-
-                    <LinearLayout
+                        android:id="@+id/textView42"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkBoxPhone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="15dp"
-                            android:layout_gravity="right"
-                            android:text="Cochez pour un numéro étranger"
-                            android:textColor="#323232"
-                            android:textSize="8dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView42"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="15dp"
-                            android:gravity="center"
-                            android:text="Vérifiez votre adresse e-mail et cliquez sur « Accédez à votre bilan ! » pour recevoir votre bilan minceur personnalisé par e-mail."
-                            android:textColor="#D0D0D0"
-                            android:textSize="8dp" />
-
-                        <Button
-                            android:id="@+id/btnPersoInfoProcess"
-                            android:layout_width="270dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center|bottom"
-                            android:layout_marginBottom="15dp"
-                            android:background="@drawable/button_orange_bilanminceur"
-                            android:tag="btnPersoInfoProcess"
-                            android:text="Je continue"
-                            android:textColor="#FFFFFF" />
-                    </LinearLayout>
-
-                </LinearLayout>
-            </ScrollView>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/dietProfileResultsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:background="@android:color/black">
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="18dp"
-                android:layout_marginStart="18dp"
-                android:text="Vos résultats"
-                android:textColor="#323232"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/imageViewProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/results_progress01" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewGreeting"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="Bravo, je vais vous aider à perdre ces #TargetWeightLoss kilos et à #Q6Result"
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textViewProgramme"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="En suivant mon programme, vous allez bénéficier de tous les outils et conseils pour atteindre votre objectif de #TargetWeight kilos. Cette méthode de rééquilibrage alimentaire sera bénéfique pour votre santé et complètement adaptée à votre profil."
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Regardez la vidéo personnalisée de votre bilan minceur :"
-                    android:textColor="#323232" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/results01_fig01" />
-            </LinearLayout>
-
-            <WebView
-                android:id="@+id/webViewResultsVideo"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:orientation="vertical">
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/results01_sign" />
+                        android:gravity="center"
+                        android:text="@string/bilan_check_email"
+                        android:textColor="@color/light_gray_text_bilan"
+                        android:textSize="10dp" />
 
                     <Button
-                        android:id="@+id/buttonToResultsPage2"
-                        android:layout_width="120dp"
+                        android:id="@+id/btnPersoInfoProcess"
+                        android:layout_width="270dp"
                         android:layout_height="35dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center|bottom"
+                        android:layout_marginBottom="15dp"
                         android:background="@drawable/button_orange_bilanminceur"
-                        android:tag="buttonToResultsPage2"
-                        android:text="Continuer"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/textViewResultPage2Content"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.7"
-                android:text="TextView"
-                android:textColor="#323232" />
-
-            <LinearLayout
-                android:id="@+id/dietProfileResultsGraph"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.5">
-
-                    <ImageView
-                        android:id="@+id/imageViewGenderGraph"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/results02_female" />
-
-                    <TextView
-                        android:id="@+id/textViewCurrentWeight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:text="170kg"
-                        android:textColor="#f2680d"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewTargetWeight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="221dp"
-                        android:layout_marginTop="68dp"
-                        android:text="150kg"
-                        android:textColor="#f2680d"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1">
-
-                    <TextView
-                        android:id="@+id/textViewCurrentIMC"
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="32dp"
-                        android:layout_marginStart="32dp"
-                        android:background="@drawable/button_lightgray_bilanminceur"
-                        android:gravity="center"
-                        android:text="IMC:22,1"
-                        android:textColor="#323232"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewAverageIMC"
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/button_lightgray_bilanminceur"
-                        android:gravity="center"
-                        android:text="21,0"
-                        android:textColor="#323232"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewTargetIMC"
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginRight="32dp"
-                        android:background="@drawable/button_lightgray_bilanminceur"
-                        android:gravity="center"
-                        android:text="19,78"
-                        android:textColor="#323232"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textViewMyIMC"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"
-                android:text="Votre IMC : Comme vous pesez #CurrentWeight kg pour #Height cm, votre Indice de Masse Corporelle (IMC) est actuellement de #CurrentIMC."
-                android:textColor="#323232"
-                android:textSize="12dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2">
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentStart="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/results02_bar" />
-
-                <TextView
-                    android:id="@+id/textViewCurrentIMCGraph"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="52dp"
-                    android:layout_marginStart="52dp"
-                    android:text="21,1"
-                    android:textColor="#323232"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewTargetIMCGraph"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="72dp"
-                    android:layout_marginStart="72dp"
-                    android:text="19,8"
-                    android:textColor="#323232"
-                    android:textStyle="bold" />
-
-
-                <Button
-                    android:id="@+id/arrowCurrentIMC"
-                    android:layout_width="36dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="52dp"
-                    android:layout_marginStart="52dp"
-                    android:background="@drawable/uparrow_red"
-                    android:text="" />
-
-                <Button
-                    android:id="@+id/arrowTargetIMC"
-                    android:layout_width="36dp"
-                    android:layout_height="32dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="52dp"
-                    android:background="@drawable/uparrow_green"
-                    android:text="" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2">
-
-                <Button
-                    android:id="@+id/buttonReturnToResultsPage1"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginStart="28dp"
-                    android:background="@drawable/button_lightgray_bilanminceur"
-                    android:tag="buttonReturnToResultsPage1"
-                    android:text="Retour"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/buttonToResultsPage3"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:tag="buttonToResultsPage3"
-                    android:text="Continuer"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:weightSum="1.8">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewQ3Result"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewQ3Result"
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Même si vous souhaitez suivre un régime amaigrissant, ne croyez pas que vous allez devoir changer toutes vos habitudes : vous devez les adapter certes, mais certainement pas les changer du tout au tout."
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textViewTestimonialTitle1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewTestimonialTitle1"
-                    android:textColor="#323232" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-
-                <WebView
-                    android:id="@+id/webViewResultsTestimonialVideo1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="0.3"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/results03_fig1" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView28"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des plans de repas sans privations ni aliments interdits"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Le Jeune Cohen 16H pour accélérer votre perte de poids"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView26"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des techniques pour rattraper les écarts en douceur"
-                        android:textColor="#323232" />
+                        android:tag="btnPersoInfoProcess"
+                        android:text="@string/bilan_continue"
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
             </LinearLayout>
+        </ScrollView>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3">
+    </RelativeLayout>
 
-                <Button
-                    android:id="@+id/buttonReturnToResultsPage2"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginStart="28dp"
-                    android:background="@drawable/button_lightgray_bilanminceur"
-                    android:tag="buttonReturnToResultsPage2"
-                    android:text="Retour"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
+    <include
+        android:id="@+id/dietProfileResultsLayout"
+        layout="@layout/bilan_results_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/buttonToResultsPage4"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/buttonReturnToResultsPage2"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:tag="buttonToResultsPage4"
-                    android:text="Continuer"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vous allez durablement améliorer votre santé"
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="En France, 15 millions de personnes sont en surpoids et 6.9 millions sont en situation d’obésité, soit au total 32.3 % de la population. Si la tendance se poursuit, la population en situation d’obésité en France pourrait atteindre 30% d’ici 30 ans... et ainsi rejoindre le niveau des Etats-Unis."
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textViewTestimonialTitle2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewTestimonialTitle2"
-                    android:textColor="#323232" />
-            </LinearLayout>
-
-            <WebView
-                android:id="@+id/webViewResultsTestimonialVideo2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="0.3"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/results04_fig1" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView31"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Les conseils vidéo quotidiens de Jean-Michel Cohen"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView30"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des résultats scientifiquement prouvés (Etude 2014 SEPREM*)"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView29"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des outils pratiques pour réapprendre à manger et rééquilibrer votre alimentation"
-                        android:textColor="#323232" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3">
-
-                <Button
-                    android:id="@+id/buttonReturnToResultsPage3"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginStart="28dp"
-                    android:background="@drawable/button_lightgray_bilanminceur"
-                    android:tag="buttonReturnToResultsPage3"
-                    android:text="Retour"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/buttonToResultsPage5"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/buttonReturnToResultsPage3"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:tag="buttonToResultsPage5"
-                    android:text="Continuer"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewQ4ResultTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewQ4ResultTitle"
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textViewQ4ResultContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewQ4ResultContent"
-                    android:textColor="#323232" />
-
-                <TextView
-                    android:id="@+id/textViewTestimonialTitle3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="textViewTestimonialTitle3"
-                    android:textColor="#323232" />
-            </LinearLayout>
-
-            <WebView
-                android:id="@+id/webViewResultsTestimonialVideo3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.4"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_weight="0.3"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/results05_fig1" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Plus de confiance grâce à l'accompagnement de votre diététicienne"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView35"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des résultats scientifiquement prouvés (Etude 2014 SEPREM*)"
-                        android:textColor="#323232" />
-
-                    <TextView
-                        android:id="@+id/textView36"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="- Des outils pratiques pour réapprendre à manger et rééquilibrer votre alimentation"
-                        android:textColor="#323232" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3">
-
-                <Button
-                    android:id="@+id/buttonReturnToResultsPage4"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginStart="28dp"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:tag="buttonReturnToResultsPage4"
-                    android:text="Retour"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/buttonToResultsPage6"
-                    android:layout_width="140dp"
-                    android:layout_height="35dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/buttonReturnToResultsPage4"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginRight="28dp"
-                    android:background="@drawable/button_lightgray_bilanminceur"
-                    android:tag="buttonToResultsPage6"
-                    android:text="Continuer"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/dietProfileResultsPage6"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/results06_coachpic" />
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginStart="17dp"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:layout_toRightOf="@+id/imageView"
-                    android:text="La méthode Savoir Maigrir correspond précisément à vos besoins."
-                    android:textColor="#323232"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewResultPage6Content1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Vous avez #TargetWeightLoss kilos à perdre et je vous recommande mon programme qui va vous permettre de perdre tranquillement ces kilos puis de profiter d'une période de stabilisation pour muscler votre corps ! Rappelez-vous que votre succès est important pour votre santé mais aussi pour votre bien être et votre confiance en vous. Savoir maigrir est bien plus efficace qu'un régime : c'est le rééquilibrage alimentaire qui vous servira tout au long de votre vie."
-                    android:textColor="#323232"
-                    android:textSize="13dp" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="N'hésitez pas à nous poser des questions car, avec toute mon équipe, nous sommes là pour vous aider et vous conseiller !"
-                    android:textColor="#323232"
-                    android:textSize="13dp" />
-
-                <TextView
-                    android:id="@+id/textViewResultPage6Content2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="50dp"
-                    android:text="Vous pouvez avoir une confiance totale dans la méthode Savoir Maigrir, #firstname, et nous vous le prouvons en prenant cet engagement : si vous n'avez pas pu atteindre votre juste poids à la fin du programme, nous nous engageons à vous le rembourser intégralement."
-                    android:textColor="#323232"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="270dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/button_orange_bilanminceur"
-                    android:text="Je m'abone"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
 </LinearLayout>

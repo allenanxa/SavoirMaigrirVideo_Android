@@ -6,8 +6,7 @@
         android:name="anxa.com.smvideo.ApplicationData"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label=
-            "@string/app_name"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
         android:hardwareAccelerated="true">
@@ -46,9 +45,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.RecipeActivity"
+            android:name=".activities.account.CoachingArchiveAccountActivity"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

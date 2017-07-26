@@ -24,8 +24,6 @@ import anxa.com.smvideo.contracts.VideoResponseContract;
 public class MonCompteActivity extends Fragment {
 
     private Context context;
-    protected ApiCaller caller;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,8 +32,6 @@ public class MonCompteActivity extends Fragment {
         this.context = getActivity();
 
         View mView = inflater.inflate(R.layout.mon_compte, null);
-        caller = new ApiCaller();
-
 
         //header change
         ((TextView) ((RelativeLayout) mView.findViewById(R.id.headermenu)).findViewById(R.id.header_title_tv)).setText(getString(R.string.menu_mon_compte));

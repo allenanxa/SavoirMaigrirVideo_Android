@@ -5,12 +5,12 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -25,9 +25,7 @@ import anxa.com.smvideo.R;
 import anxa.com.smvideo.common.SavoirMaigrirVideoConstants;
 import anxa.com.smvideo.connection.ApiCaller;
 import anxa.com.smvideo.connection.http.AsyncResponse;
-import anxa.com.smvideo.contracts.RecipeContract;
 import anxa.com.smvideo.contracts.VideoContract;
-import anxa.com.smvideo.contracts.VideoDataContract;
 import anxa.com.smvideo.contracts.VideoResponseContract;
 import anxa.com.smvideo.ui.CustomListView;
 import anxa.com.smvideo.ui.VideoListAdapter;
@@ -49,6 +47,9 @@ public class DiscoverActivity extends Fragment implements View.OnClickListener {
 
     private YouTubePlayerFragment playerFragment;
     View mView;
+
+    private static final int RECOVERY_REQUEST = 1;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,62 +141,65 @@ public class DiscoverActivity extends Fragment implements View.OnClickListener {
     private void RefreshPlayer(final View v, final VideoContract video) {
         playerFragment.initialize(SavoirMaigrirVideoConstants.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean b) {
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, final YouTubePlayer youTubePlayer, boolean wasRestored) {
                 if (video.VideoId != null) {
 
-                    youTubePlayer.cueVideo(String.valueOf(video.VideoId));
+                    if (!wasRestored) {
+                        youTubePlayer.cueVideo(String.valueOf(video.VideoId));
 
-                    ((TextView) (mView.findViewById(R.id.videoTitle))).setText(video.Title);
-                    ((TextView) (mView.findViewById(R.id.videoDesc))).setText(video.Description);
-                    ((TextView) (mView.findViewById(R.id.videoDuration))).setText(video.Duration);
-                    youTubePlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
-                        @Override
-                        public void onBuffering(boolean arg0) {
-                        }
-
-                        @Override
-                        public void onPaused() {
-                        }
-
-                        @Override
-                        public void onPlaying() {
-                            //youTubePlayer.setFullscreen(true);
-                            youTubePlayer.play();
-                        }
-
-                        @Override
-                        public void onSeekTo(int arg0) {
-                        }
-
-                        @Override
-                        public void onStopped() {
-                            //youTubePlayer.setFullscreen(false);
-                        }
-                    });
-
-                    youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
-                        @Override
-                        public void onFullscreen(boolean b) {
-                            if (!b){
-                                getActivity().setRequestedOrientation(
-                                        ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                                if (youTubePlayer.isPlaying()) {
-                                    System.out.println("notfullscreen youtubeplay playing");
-                                    youTubePlayer.play();
-                                }else{
-                                    System.out.println("notfullscreen youtubeplay not playing");
-                                }
-                            }else{
-                                if (youTubePlayer.isPlaying()) {
-                                    System.out.println("fullscreen youtubeplay playing");
-                                    youTubePlayer.play();
-                                }else{
-                                    System.out.println("fullscreen youtubeplay not playing");
-                                }
+                        ((TextView) (mView.findViewById(R.id.videoTitle))).setText(video.Title);
+                        ((TextView) (mView.findViewById(R.id.videoDesc))).setText(video.Description);
+                        ((TextView) (mView.findViewById(R.id.videoDuration))).setText(video.Duration);
+                        youTubePlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
+                            @Override
+                            public void onBuffering(boolean arg0) {
                             }
 
-                        }
-                    });
+                            @Override
+                            public void onPaused() {
+                            }
+
+                            @Override
+                            public void onPlaying() {
+                                //youTubePlayer.setFullscreen(true);
+                                youTubePlayer.play();
+                            }
+
+                            @Override
+                            public void onSeekTo(int arg0) {
+                            }
+
+                            @Override
+                            public void onStopped() {
+                                //youTubePlayer.setFullscreen(false);
+                            }
+                        });
+
+                        youTubePlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+                            @Override
+                            public void onFullscreen(boolean b) {
+                                if (!b) {
+                                    getActivity().setRequestedOrientation(
+                                            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                                    if (youTubePlayer.isPlaying()) {
+                                        System.out.println("notfullscreen youtubeplay playing");
+                                        youTubePlayer.play();
+                                    } else {
+                                        System.out.println("notfullscreen youtubeplay not playing");
+                                    }
+                                } else {
+                                    if (youTubePlayer.isPlaying()) {
+                                        System.out.println("fullscreen youtubeplay playing");
+                                        youTubePlayer.play();
+                                    } else {
+                                        System.out.println("fullscreen youtubeplay not playing");
+                                    }
+                                }
+
+                            }
+                        });
+
+                    }
 
 
                 }
@@ -205,6 +209,12 @@ public class DiscoverActivity extends Fragment implements View.OnClickListener {
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
                 //Toast.makeText(YouTubePlayerFragmentActivity.this, "Error while initializing YouTubePlayer.", Toast.LENGTH_SHORT).show();
+                if (youTubeInitializationResult.isUserRecoverableError()) {
+                    youTubeInitializationResult.getErrorDialog(getActivity(), RECOVERY_REQUEST).show();
+                } else {
+                    String error = String.format(getString(R.string.player_error), youTubeInitializationResult.toString());
+                    Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+                }
             }
 
 

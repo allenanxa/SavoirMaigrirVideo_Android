@@ -10,4 +10,5 @@ public class MasterCommand {
     public String Email;
 
     public String Command;
+    public int ApplicationId;
 }

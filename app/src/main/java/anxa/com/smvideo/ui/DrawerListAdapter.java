@@ -24,9 +24,6 @@ public class DrawerListAdapter extends BaseAdapter {
     ArrayList<NavItem> mNavItems;
 
     public DrawerListAdapter(Context context, ArrayList<NavItem> navItems) {
-
-
-        System.out.println("DrawerListAdapter: " + context + " navItems: " + navItems);
         mContext = context;
         mNavItems = navItems;
     }

@@ -33,36 +33,45 @@ public class RecipeActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.recipe, null);
-        ((TextView)((RelativeLayout)mView.findViewById(R.id.headermenu)).findViewById(R.id.header_title_tv)).setText(getString(R.string.menu_recette));
-        ((ImageView)((RelativeLayout)mView.findViewById(R.id.headermenu)).findViewById(R.id.header_menu_back)).setVisibility(View.VISIBLE);
-        ((ImageView)((RelativeLayout)mView.findViewById(R.id.headermenu)).findViewById(R.id.header_menu_iv)).setVisibility(View.GONE);
+        ((TextView) ((RelativeLayout) mView.findViewById(R.id.headermenu)).findViewById(R.id.header_title_tv)).setText(getString(R.string.menu_recette));
+        ((ImageView) ((RelativeLayout) mView.findViewById(R.id.headermenu)).findViewById(R.id.header_menu_back)).setVisibility(View.VISIBLE);
+        ((ImageView) ((RelativeLayout) mView.findViewById(R.id.headermenu)).findViewById(R.id.header_menu_iv)).setVisibility(View.GONE);
 
         String myValue = this.getArguments().getString("message");
-        int recipeId = Integer.parseInt(this.getArguments().getString("RECIPE_ID"));
-        recipesList = ApplicationData.getInstance().recipeList;
-        if(recipeId > 0){
-            for(RecipeContract r : recipesList)
-            {
-               if(r.Id == recipeId)
-               {
-                   ((TextView)mView.findViewById(R.id.recipeTitle)).setText(r.Title);
-                   Bitmap avatar = null;
-                   avatar = RecipeHelper.GetRecipeImage(r.Id);
-                   ImageView img = (ImageView)mView.findViewById(R.id.recipeImage);
-                   img.setTag(r.Id);
-                   if (avatar == null) {
-                       new RecipeDownloadImageAsync( img,(ProgressBar) mView.findViewById(R.id.recipeImageProgress), r.Id).execute(r.ImageUrl);
-                   } else {
-                       ((ImageView)mView.findViewById(R.id.recipeImage)).setImageBitmap(avatar);
-                       ((ProgressBar) mView.findViewById(R.id.recipeImageProgress)).setVisibility(View.GONE);
-                   }
-                   ((TextView)mView.findViewById(R.id.recipeIngredientsTitle)).setText((r.IngredientsTitle));
-                   ((TextView)mView.findViewById(R.id.recipeIngredients)).setText(Html.fromHtml(r.IngredientsHtml, null, new UITagHandler()));
-                   ((TextView)mView.findViewById(R.id.recipePreparation)).setText(Html.fromHtml(r.PreparationHtml, null, new UITagHandler()));
-               }
+        String source = this.getArguments().getString("SOURCE");
+
+        if (source.equalsIgnoreCase("fromRepas")) {
+            updateUI(ApplicationData.getInstance().selectedRelatedRecipe);
+
+        } else {
+            int recipeId = Integer.parseInt(this.getArguments().getString("RECIPE_ID"));
+            recipesList = ApplicationData.getInstance().recipeList;
+            if (recipeId > 0) {
+                for (RecipeContract r : recipesList) {
+                    if (r.Id == recipeId) {
+                        updateUI(r);
+                    }
+                }
             }
         }
         return mView;
+    }
+
+    private void updateUI(RecipeContract recipeContract) {
+        ((TextView) mView.findViewById(R.id.recipeTitle)).setText(recipeContract.Title);
+        Bitmap avatar = null;
+        avatar = RecipeHelper.GetRecipeImage(recipeContract.Id);
+        ImageView img = (ImageView) mView.findViewById(R.id.recipeImage);
+        img.setTag(recipeContract.Id);
+        if (avatar == null) {
+            new RecipeDownloadImageAsync(img, (ProgressBar) mView.findViewById(R.id.recipeImageProgress), recipeContract.Id).execute(recipeContract.ImageUrl);
+        } else {
+            ((ImageView) mView.findViewById(R.id.recipeImage)).setImageBitmap(avatar);
+            ((ProgressBar) mView.findViewById(R.id.recipeImageProgress)).setVisibility(View.GONE);
+        }
+        ((TextView) mView.findViewById(R.id.recipeIngredientsTitle)).setText((recipeContract.IngredientsTitle));
+        ((TextView) mView.findViewById(R.id.recipeIngredients)).setText(Html.fromHtml(recipeContract.IngredientsHtml, null, new UITagHandler()));
+        ((TextView) mView.findViewById(R.id.recipePreparation)).setText(Html.fromHtml(recipeContract.PreparationHtml, null, new UITagHandler()));
     }
 
 
@@ -72,11 +81,8 @@ public class RecipeActivity extends Fragment {
             avatarBMP = ApplicationData.getInstance().recipePhotoList.get(String.valueOf(recipeId));
 
             return avatarBMP;
-
         }
-
         return avatarBMP;
-
     }
 
 }
