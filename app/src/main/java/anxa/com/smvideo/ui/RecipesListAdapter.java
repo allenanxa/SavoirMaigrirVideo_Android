@@ -2,7 +2,11 @@ package anxa.com.smvideo.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +15,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import anxa.com.smvideo.ApplicationData;
 import anxa.com.smvideo.R;
-import anxa.com.smvideo.connection.http.RecipeDownloadImageAsync;
 import anxa.com.smvideo.contracts.RecipeContract;
 import anxa.com.smvideo.util.RecipeHelper;
 
@@ -85,23 +97,41 @@ public class RecipesListAdapter extends ArrayAdapter<RecipeContract> implements 
 
         Bitmap avatar = null;
         avatar = RecipeHelper.GetRecipeImage(recipe.Id);
-        viewHolder.recipeImage.setTag(recipe.Id);
+
+        //viewHolder.recipeImage.setTag(recipe.Id);
         //display message
         viewHolder.recipeTitle.setText(recipe.Title);
 
         if (avatar == null) {
            /* if( !ApplicationData.getInstance().RecipeOngoigImageDownload.contains(recipe.Id)) {
                 ApplicationData.getInstance().RecipeOngoigImageDownload.add(recipe.Id);*/
-            new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).execute(recipe.ImageUrl);
-//                new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, recipe.ImageUrl);
+            //new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).execute(recipe.ImageUrl);
+               //new RecipeDownloadImageAsync(viewHolder.recipeImage, viewHolder.recipeImageProgress, recipe.Id).executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, recipe.ImageUrl);
             //}
+
+           // Picasso.with(context).setDebugging(true);
+            //Picasso.with(context).setIndicatorsEnabled(true);
+            Glide.with(context).load(recipe.ImageUrl).diskCacheStrategy(DiskCacheStrategy.RESULT).into(viewHolder.recipeImage);
+            try {
+                if (!ApplicationData.getInstance().recipePhotoList.containsKey(String.valueOf(recipe.Id)) && viewHolder.recipeImage.getDrawable() != null) {
+
+                    ApplicationData.getInstance().recipePhotoList.put(String.valueOf(recipe.Id), ((GlideBitmapDrawable)viewHolder.recipeImage.getDrawable()).getBitmap());
+                }
+
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            viewHolder.recipeImageProgress.setVisibility(View.GONE);
         } else {
+            //Picasso.with(context).load(avatar).fit().into(viewHolder.recipeImage);
             viewHolder.recipeImage.setImageBitmap(avatar);
             viewHolder.recipeImageProgress.setVisibility(View.GONE);
         }
 
         return row;
     }
+
 
 
     private void refreshUI() {

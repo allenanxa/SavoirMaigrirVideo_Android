@@ -31,7 +31,7 @@ public class AnxacoachingHttpRequest {
     String paramsString;
 
 
-    public String makeHttpRequest(String url, String method, String json)  {
+    public String makeHttpRequest(String url, String method, String json) {
 
         System.out.println("makeHttpRequest: " + url + " method: " + method + "json: " + json);
 
@@ -46,6 +46,7 @@ public class AnxacoachingHttpRequest {
 
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Accept", "application/json");
+                conn.setRequestProperty("charset", "utf-8");
                 conn.setRequestProperty("Accept-Charset", charset);
                 conn.setRequestProperty("Content-Type", "application/json");
                 conn.setRequestProperty("Accept-Encoding", "gzip;q=1.0, compress;q=0.5");
@@ -53,8 +54,6 @@ public class AnxacoachingHttpRequest {
                 conn.setConnectTimeout(60000);
 
                 conn.connect();
-
-
 
 
                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
@@ -65,8 +64,7 @@ public class AnxacoachingHttpRequest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else if(method.equals("GET")){
+        } else if (method.equals("GET")) {
 
             try {
                 urlObj = new URL(url);

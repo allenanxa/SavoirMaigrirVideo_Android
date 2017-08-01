@@ -48,13 +48,8 @@ public class AnxacoachingPostAsync extends AsyncTask<String,String, String> {
     protected  String doInBackground(String... params) {
 
         try {
-
-
             Log.d("request", "starting");
-
             return jsonParser.makeHttpRequest( ApiUrl , "POST", params[0]);
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

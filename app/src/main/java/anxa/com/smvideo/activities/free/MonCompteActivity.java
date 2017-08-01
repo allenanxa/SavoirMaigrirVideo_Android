@@ -1,4 +1,4 @@
-package anxa.com.smvideo.activities;
+package anxa.com.smvideo.activities.free;
 
 import android.app.Fragment;
 import android.content.Context;

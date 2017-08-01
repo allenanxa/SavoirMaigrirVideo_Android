@@ -28,6 +28,11 @@ import anxa.com.smvideo.activities.account.MonCompteAccountFragment;
 import anxa.com.smvideo.activities.account.RecipesAccountFragment;
 import anxa.com.smvideo.activities.account.RepasFragment;
 import anxa.com.smvideo.activities.account.WeightGraphFragment;
+import anxa.com.smvideo.activities.free.BilanMinceurActivity;
+import anxa.com.smvideo.activities.free.DiscoverActivity;
+import anxa.com.smvideo.activities.free.MonCompteActivity;
+import anxa.com.smvideo.activities.free.RecipesActivity;
+import anxa.com.smvideo.activities.free.TemoignagesActivity;
 import anxa.com.smvideo.models.NavItem;
 import anxa.com.smvideo.ui.DrawerListAdapter;
 import anxa.com.smvideo.util.AppUtil;
@@ -76,7 +81,7 @@ public class MainActivity extends BaseVideoActivity implements View.OnClickListe
 
             String welcome_message;
             if (ApplicationData.getInstance().userDataContract.FirstName!=null) {
-                welcome_message = getString(R.string.welcome_account_1).replace("%@", ApplicationData.getInstance().userDataContract.FirstName).concat(getString(R.string.welcome_account_2).replace("%d", Integer.toString(AppUtil.getCurrentWeek())));
+                welcome_message = getString(R.string.welcome_account_1).replace("%@", ApplicationData.getInstance().userDataContract.FirstName).concat(getString(R.string.welcome_account_2).replace("%d", Integer.toString(ApplicationData.getInstance().currentWeekNumber)));
             }else{
                 welcome_message = getString(R.string.welcome_account_1).replace("%@", ApplicationData.getInstance().userName).concat(getString(R.string.welcome_account_2).replace("%d", Integer.toString(ApplicationData.getInstance().currentWeekNumber)));
 

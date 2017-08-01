@@ -11,4 +11,6 @@ public class MasterCommand {
 
     public String Command;
     public int ApplicationId;
+    public String RegEmail;
+    public boolean IncludeData;
 }

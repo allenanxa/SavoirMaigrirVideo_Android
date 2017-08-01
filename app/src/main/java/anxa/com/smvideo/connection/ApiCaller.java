@@ -19,6 +19,7 @@ import anxa.com.smvideo.contracts.BMResultsResponseContract;
 import anxa.com.smvideo.contracts.BMVideoResponseContract;
 import anxa.com.smvideo.contracts.BaseContract;
 import anxa.com.smvideo.contracts.CoachingVideosResponseContract;
+import anxa.com.smvideo.contracts.LoginContract;
 import anxa.com.smvideo.contracts.RecipeResponseContract;
 import anxa.com.smvideo.contracts.RepasResponseContract;
 import anxa.com.smvideo.contracts.UserDataContract;
@@ -102,6 +103,15 @@ public class ApiCaller {
      * Account
      **/
 
+    public void PostLogin(AsyncResponse asyncResponse, LoginContract loginContract) {
+        MasterCommand command = new MasterCommand();
+        command.Command = CommandConstants.ACCOUNT_LOGIN;
+        command.RegEmail = loginContract.Email;
+        command.IncludeData = true;
+
+        apiClient.PostAsync(asyncResponse, CommandConstants.API_USER, command, gson.toJson(loginContract), UserDataResponseContract.class, AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
     public void GetAccountUserData(AsyncResponse asyncResponse) {
 
         MasterCommand command = new MasterCommand();
@@ -124,8 +134,9 @@ public class ApiCaller {
     }
 
 
-    public void GetAccountCoaching(AsyncResponse asyncResponse, int currentWeek) {
 
+    public void GetAccountCoaching(AsyncResponse asyncResponse, int currentWeek) {
+        //http://dev.savoir-maigrir.aujourdhui.com/api/Help/Api/GET-video-coaching-regId-currentWeekNum
         MasterCommand command = new MasterCommand();
         command.Command = CommandConstants.ACCOUNT_COACHING + currentWeek;
 
@@ -184,7 +195,7 @@ public class ApiCaller {
         Hashtable params = new Hashtable();
         params.put("recipeType", recipeType);
 
-        apiClient.GetAsync(asyncResponse, CommandConstants.API_RECIPES, command, params, RecipeResponseContract.class, AsyncTask.THREAD_POOL_EXECUTOR);
+        apiClient.GetAsync(asyncResponse, CommandConstants.API_RECIPES, command, params, RecipeResponseContract.class, AsyncTask.SERIAL_EXECUTOR);
     }
 
     public void GetAccountGraphData(AsyncResponse asyncResponse) {

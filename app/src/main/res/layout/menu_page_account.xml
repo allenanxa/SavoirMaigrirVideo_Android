@@ -122,11 +122,12 @@
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
+                android:gravity="center"
                 android:weightSum="2">
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -135,24 +136,27 @@
                     <ImageView
                         android:id="@+id/LandingImage1_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_coaching" />
 
                     <Button
                         android:id="@+id/LandingCoachingButton"
                         style="@style/LandingButtonAccount"
-                        android:layout_width="129dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_coaching"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage1_account"
+                        android:layout_alignStart="@+id/LandingImage1_account"
+                        android:layout_alignRight="@+id/LandingImage1_account"
+                        android:layout_alignEnd="@+id/LandingImage1_account" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -161,8 +165,8 @@
                     <ImageView
                         android:id="@+id/LandingImage2_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_repas" />
 
@@ -173,7 +177,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_repas"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage2_account"
+                        android:layout_alignStart="@+id/LandingImage2_account"
+                        android:layout_alignRight="@+id/LandingImage2_account"
+                        android:layout_alignEnd="@+id/LandingImage2_account" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -187,7 +194,7 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -196,8 +203,8 @@
                     <ImageView
                         android:id="@+id/LandingImage3_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_recettes" />
 
@@ -208,7 +215,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_recettes"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage3_account"
+                        android:layout_alignStart="@+id/LandingImage3_account"
+                        android:layout_alignRight="@+id/LandingImage3_account"
+                        android:layout_alignEnd="@+id/LandingImage3_account" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -222,8 +232,8 @@
                     <ImageView
                         android:id="@+id/LandingImage4_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_conseils" />
 
@@ -234,7 +244,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_conseils"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage4_account"
+                        android:layout_alignStart="@+id/LandingImage4_account"
+                        android:layout_alignRight="@+id/LandingImage4_account"
+                        android:layout_alignEnd="@+id/LandingImage4_account" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -249,7 +262,7 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -258,8 +271,8 @@
                     <ImageView
                         android:id="@+id/LandingImage5_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_exercise" />
 
@@ -270,12 +283,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_exercices"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage5_account"
+                        android:layout_alignStart="@+id/LandingImage5_account"
+                        android:layout_alignRight="@+id/LandingImage5_account"
+                        android:layout_alignEnd="@+id/LandingImage5_account" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -284,8 +300,8 @@
                     <ImageView
                         android:id="@+id/LandingImage6_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_poids" />
 
@@ -296,7 +312,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_poids"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage6_account"
+                        android:layout_alignStart="@+id/LandingImage6_account"
+                        android:layout_alignRight="@+id/LandingImage6_account"
+                        android:layout_alignEnd="@+id/LandingImage6_account" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -310,7 +329,7 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
@@ -319,8 +338,8 @@
                     <ImageView
                         android:id="@+id/LandingImage7_account"
                         style="@style/LandingImage"
-                        android:layout_width="129dp"
-                        android:layout_height="72dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:src="@drawable/landing_account_compte" />
 
@@ -331,7 +350,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/menu_account_compte"
                         android:layout_alignParentBottom="true"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_alignLeft="@+id/LandingImage7_account"
+                        android:layout_alignStart="@+id/LandingImage7_account"
+                        android:layout_alignRight="@+id/LandingImage7_account"
+                        android:layout_alignEnd="@+id/LandingImage7_account" />
                 </RelativeLayout>
 
             </LinearLayout>

@@ -208,8 +208,19 @@
     <!--Youtube-->
     <string name="player_error">Error initializing YouTube player: %s</string>
 
+    <!--Login Page-->
+    <string name="login_login_button">Connexion</string>
+    <string name="login_registration_button">Je m\'inscris</string>
+    <string name="login_login_account_button">Deja inscrit ? Connectez-vous ! </string>
+    <string name="login_free_button">Découvrir l\’appli</string>
+    <string name="login_programme">programme en vidéo</string>
+    <string name="login_back_to_landing">Pas encore inscrit ?</string>
+    <string name="login_email_placeholder">Votre adresse Email</string>
+    <string name="login_password_placeholder">Votre mot de pass</string>
 
-
+    <string name="ALERTMESSAGE_LOGIN_EMPTY">Authentification invalide</string>
+    <string name="ALERTMESSAGE_LOGIN_FAILED">La connexion à votre compte a échoué.</string>
+    <string name="ALERTMESSAGE_LOGIN_EMAIL_ERROR">Le format de votre e-mail est erronée. Veuillez entrer une adresse email valide .</string>
 
 
 </resources>

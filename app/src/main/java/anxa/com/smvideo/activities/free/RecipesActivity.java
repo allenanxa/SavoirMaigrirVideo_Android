@@ -1,4 +1,4 @@
-package anxa.com.smvideo.activities;
+package anxa.com.smvideo.activities.free;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,15 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.youtube.player.YouTubePlayer;
 import com.google.gson.Gson;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import anxa.com.smvideo.ApplicationData;
 import anxa.com.smvideo.R;
+import anxa.com.smvideo.activities.free.RecipeActivity;
 import anxa.com.smvideo.connection.ApiCaller;
 import anxa.com.smvideo.connection.http.AsyncResponse;
 import anxa.com.smvideo.contracts.RecipeContract;

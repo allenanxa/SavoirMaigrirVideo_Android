@@ -1,6 +1,5 @@
 package anxa.com.smvideo.activities.account;
 
-import android.app.Application;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -8,36 +7,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import anxa.com.smvideo.ApplicationData;
 import anxa.com.smvideo.R;
-import anxa.com.smvideo.activities.RecipeActivity;
+import anxa.com.smvideo.activities.free.RecipeActivity;
 import anxa.com.smvideo.connection.ApiCaller;
 import anxa.com.smvideo.connection.http.AsyncResponse;
 import anxa.com.smvideo.contracts.RecipeContract;
 import anxa.com.smvideo.contracts.RecipeResponseContract;
 import anxa.com.smvideo.contracts.RepasContract;
 import anxa.com.smvideo.contracts.RepasResponseContract;
-import anxa.com.smvideo.contracts.VideoContract;
-import anxa.com.smvideo.contracts.VideoResponseContract;
 import anxa.com.smvideo.ui.CustomListView;
-import anxa.com.smvideo.ui.DrawerListAdapter;
-import anxa.com.smvideo.ui.RecipesListAdapter;
 import anxa.com.smvideo.ui.RepasListAdapter;
 import anxa.com.smvideo.ui.RepasRelatedListAdapter;
 import anxa.com.smvideo.util.AppUtil;
-import anxa.com.smvideo.util.VideoHelper;
 
 /**
  * Created by aprilanxa on 22/06/2017.

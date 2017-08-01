@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import anxa.com.smvideo.ApplicationData;
 import anxa.com.smvideo.R;
-import anxa.com.smvideo.activities.RecipeActivity;
+import anxa.com.smvideo.activities.free.RecipeActivity;
 import anxa.com.smvideo.connection.ApiCaller;
 import anxa.com.smvideo.connection.http.AsyncResponse;
 import anxa.com.smvideo.contracts.RecipeContract;
@@ -83,25 +85,32 @@ public class RecipesAccountFragment extends Fragment implements View.OnClickList
             adapter.updateItems(currentViewRecipeList);
         } else {
             //api call
-            caller.GetAccountRecettes(new AsyncResponse() {
+            addOnClickListener();
+                        caller.GetAccountRecettes(new AsyncResponse() {
 
-                @Override
-                public void processFinish(Object output) {
-                    if (output != null) {
-                        RecipeResponseContract c = (RecipeResponseContract) output;
-                        //INITIALIZE ALL ONCLICK AND API RELATED PROCESS HERE TO AVOID CRASHES
+                            @Override
+                            public void processFinish(Object output) {
+                                if (output != null) {
+                                    RecipeResponseContract c = (RecipeResponseContract) output;
+                                    //INITIALIZE ALL ONCLICK AND API RELATED PROCESS HERE TO AVOID CRASHES
 
-                        if (c != null && c.Data != null && c.Data.Recipes != null) {
+                                    if (c != null && c.Data != null && c.Data.Recipes != null) {
+                                        Collections.sort(c.Data.Recipes, new Comparator<RecipeContract>() {
+                                            @Override
+                                            public int compare(final RecipeContract object1, final RecipeContract object2) {
+                                                return object1.Title.compareTo(object2.Title);
+                                            }
+                                        });
+                                        recipesList = (List<RecipeContract>) c.Data.Recipes;
+                                        ApplicationData.getInstance().recipeAccountList.addAll(recipesList);
 
-                            recipesList = (List<RecipeContract>) c.Data.Recipes;
-                            ApplicationData.getInstance().recipeAccountList.addAll(recipesList);
+                                        updateRecipesList();
+                                    }
+                                }
+                            }
 
-                            updateRecipesList();
-                        }
-                    }
-                }
+                        }, selectedRecipeType.getNumVal());
 
-            }, selectedRecipeType.getNumVal());
         }
     }
 
@@ -115,7 +124,12 @@ public class RecipesAccountFragment extends Fragment implements View.OnClickList
                     //INITIALIZE ALL ONCLICK AND API RELATED PROCESS HERE TO AVOID CRASHES
 
                     if (c != null && c.Data != null && c.Data.Recipes != null) {
-
+                        Collections.sort(c.Data.Recipes, new Comparator<RecipeContract>() {
+                            @Override
+                            public int compare(final RecipeContract object1, final RecipeContract object2) {
+                                return object1.Title.compareTo(object2.Title);
+                            }
+                        });
                         recipesList = (List<RecipeContract>) c.Data.Recipes;
                         ApplicationData.getInstance().recipeAccountList.addAll(recipesList);
 
@@ -214,10 +228,11 @@ public class RecipesAccountFragment extends Fragment implements View.OnClickList
             Fragment fragment = new RecipeActivity();
             FragmentManager fragmentManager = getFragmentManager();
             Bundle bundle = new Bundle();
-            bundle.putString("SOURCE", "fromRecettes");
+            bundle.putString("SOURCE", "fromRecettesAccount");
             bundle.putString("RECIPE_ID", String.valueOf(recipeId));
+
             fragment.setArguments(bundle);
-            fragmentManager.beginTransaction().add(R.id.mainContent, fragment, "RECIPE_FRAGMENT").addToBackStack(null)
+            fragmentManager.beginTransaction().remove(getFragmentManager().findFragmentByTag("CURRENT_FRAGMENT")).add(R.id.mainContent, fragment, "RECIPE_FRAGMENT").addToBackStack(null)
                     .commit();
 
         }

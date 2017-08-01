@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/landing_bg">
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/login_iv"
+        android:layout_below="@id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/smv_login_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:id="@+id/login_subtitle"
+        android:layout_below="@id/login_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/darkGrayNormalXLarge"
+        android:text="@string/login_programme"/>
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:layout_width="260dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/login_email_et"
+        android:layout_below="@+id/login_subtitle"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_white_edittext_background"
+        android:hint="@string/login_email_placeholder"
+        android:paddingLeft="10dp"
+        android:layout_height="45dp" />
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="45dp"
+        android:fontFamily="sans-serif"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/login_password_et"
+        android:layout_below="@+id/login_email_et"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_white_edittext_background"
+        android:hint="@string/login_password_placeholder"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="-5dp" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="260dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_no_border_white"
+        android:text="@string/login_login_button"
+        style="@style/loginRegistrationButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_password_et"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/login_login_button"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_no_border_white"
+        android:text="@string/login_login_button"
+        style="@style/loginRegistrationButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/login_password_et"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:onClick="validateLogin"/>
+
+    <TextView
+        android:text="@string/login_back_to_landing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        style="@style/whiteNormalMedium"
+        android:id="@+id/login_back_to_landing_tv"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:onClick="goBackToLandingPage"/>
+
+
+</RelativeLayout>

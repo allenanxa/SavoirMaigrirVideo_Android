@@ -1,9 +1,11 @@
-package anxa.com.smvideo.activities;
+package anxa.com.smvideo.activities.free;
 
 import android.app.Fragment;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -45,7 +51,11 @@ public class RecipeActivity extends Fragment {
 
         } else {
             int recipeId = Integer.parseInt(this.getArguments().getString("RECIPE_ID"));
-            recipesList = ApplicationData.getInstance().recipeList;
+            if (source.equalsIgnoreCase("fromRecettesAccount")) {
+                recipesList = ApplicationData.getInstance().recipeAccountList;
+            }else{
+                recipesList = ApplicationData.getInstance().recipeList;
+            }
             if (recipeId > 0) {
                 for (RecipeContract r : recipesList) {
                     if (r.Id == recipeId) {
@@ -64,7 +74,20 @@ public class RecipeActivity extends Fragment {
         ImageView img = (ImageView) mView.findViewById(R.id.recipeImage);
         img.setTag(recipeContract.Id);
         if (avatar == null) {
-            new RecipeDownloadImageAsync(img, (ProgressBar) mView.findViewById(R.id.recipeImageProgress), recipeContract.Id).execute(recipeContract.ImageUrl);
+
+            Glide.with(this).load(recipeContract.ImageUrl).into(img);
+            try {
+                if (!ApplicationData.getInstance().recipePhotoList.containsKey(String.valueOf(recipeContract.Id)) && img.getDrawable() != null) {
+
+                    ApplicationData.getInstance().recipePhotoList.put(String.valueOf(recipeContract.Id), ((GlideBitmapDrawable)img.getDrawable()).getBitmap());
+                }
+
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+          mView.findViewById(R.id.recipeImageProgress).setVisibility(View.GONE);
+            //new RecipeDownloadImageAsync(img, (ProgressBar) mView.findViewById(R.id.recipeImageProgress), recipeContract.Id).execute(recipeContract.ImageUrl);
         } else {
             ((ImageView) mView.findViewById(R.id.recipeImage)).setImageBitmap(avatar);
             ((ProgressBar) mView.findViewById(R.id.recipeImageProgress)).setVisibility(View.GONE);

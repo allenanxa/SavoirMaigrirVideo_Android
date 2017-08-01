@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
         android:hardwareAccelerated="true">
+        <activity android:name=".activities.MainLandingPageActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize">
@@ -32,6 +40,15 @@
             android:name=".activities.LandingPageActivity"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustPan|adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

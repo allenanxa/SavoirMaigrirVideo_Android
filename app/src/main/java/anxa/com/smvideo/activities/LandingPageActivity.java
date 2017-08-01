@@ -1,8 +1,6 @@
 package anxa.com.smvideo.activities;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +19,7 @@ public class LandingPageActivity extends Activity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.landing_page);
+        setContentView(R.layout.menu_page_free);
 
         ApplicationData.getInstance().showLandingPage = false;
 

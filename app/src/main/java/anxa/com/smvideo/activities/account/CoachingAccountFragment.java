@@ -242,8 +242,6 @@ public class CoachingAccountFragment extends Fragment implements View.OnClickLis
     }
 
     private void updateVideosList() {
-        System.out.println("updateVideosList selectedweek: " + selectedCoachingWeekNumber);
-
         videosList = new ArrayList<>();
 
         for (CoachingVideosContract v : ApplicationData.getInstance().coachingVideoList) {
@@ -269,8 +267,6 @@ public class CoachingAccountFragment extends Fragment implements View.OnClickLis
     }
 
     private void getCoachingVideosFromAPI() {
-        System.out.println("getCoachingVideosFromAPI selectedweek: " + selectedCoachingWeekNumber);
-
         caller.GetAccountCoaching(new AsyncResponse() {
             @Override
             public void processFinish(Object output) {
@@ -312,8 +308,6 @@ public class CoachingAccountFragment extends Fragment implements View.OnClickLis
                 fromArchive = true;
                 selectedCoachingWeekNumber = ApplicationData.getInstance().selectedWeekNumber;
                 updateVideosList();
-
-                System.out.println("broadcast receiver");
             }
         }
     };

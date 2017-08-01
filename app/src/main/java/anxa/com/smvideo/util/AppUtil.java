@@ -21,6 +21,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import anxa.com.smvideo.ApplicationData;
 import anxa.com.smvideo.contracts.WeightGraphContract;
@@ -49,10 +51,13 @@ public class AppUtil {
         return new String(chars);
     }
 
-    public static int getCurrentWeek(){
+    public static boolean isEmail(String email) {
+        Pattern pattern1 = Pattern
+                .compile("^([a-zA-Z0-9_.+-])+@([a-zA-Z0-9_.-])+\\.([a-zA-Z])+([a-zA-Z])+");
 
-        return 0;
-//       return new GregorianCalendar().get(Calendar.WEEK_OF_YEAR);
+        Matcher matcher1 = pattern1.matcher(email);
+
+        return matcher1.matches();
     }
 
     public static String get1MDateRangeDisplay(boolean initDate, boolean previous, int index) {

@@ -5,5 +5,6 @@ package anxa.com.smvideo.common;
  */
 
 public class WebkitURL {
-    public static String domainURL = "http://qc.savoir-maigrir.aujourdhui.com";
+//    public static String domainURL = "http://qc.savoir-maigrir.aujourdhui.com";
+    public static String domainURL = "http://dev.savoir-maigrir.aujourdhui.com";
 }

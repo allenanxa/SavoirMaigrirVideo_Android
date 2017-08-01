@@ -21,6 +21,7 @@ public class CommandConstants {
     public static String BILANMINCEUR_QUESTIONS = "free/questions";
     public static String BILANMINCEUR_RESULTS = "free/result";
 
+    public static String ACCOUNT_LOGIN = "login";
     public static String ACCOUNT_COACHING = "coaching/";
     public static String ACCOUNT_CONSEILS = "advice";
     public static String ACCOUNT_EXERCICE = "exercise";

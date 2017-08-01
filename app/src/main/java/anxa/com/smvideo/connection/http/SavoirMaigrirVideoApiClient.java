@@ -64,6 +64,20 @@ public class SavoirMaigrirVideoApiClient {
             builder.appendQueryParameter("applicationId", String.valueOf(command.ApplicationId));
         }
 
+        if(command.RegEmail != null && !command.RegEmail.isEmpty())
+        {
+            builder.appendQueryParameter("regEmail", command.RegEmail);
+        }
+
+        if(command.IncludeData)
+        {
+            builder.appendQueryParameter("includeData", "true");
+        }else{
+            builder.appendQueryParameter("includeData", "false");
+        }
+
+
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(httpMethod);
         stringBuilder.append(apiName);
@@ -73,6 +87,11 @@ public class SavoirMaigrirVideoApiClient {
 
         if(command.RegId > 0){
             stringBuilder.append(String.valueOf(command.RegId));
+        }
+
+        if(command.RegEmail != null && !command.RegEmail.isEmpty())
+        {
+            stringBuilder.append(command.RegEmail);
         }
 
         stringBuilder.append(SavoirMaigrirVideoConstants.SHARED_KEY);
