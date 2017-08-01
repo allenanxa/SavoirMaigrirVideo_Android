@@ -222,6 +222,7 @@ public class BilanMinceurActivity extends Fragment implements View.OnClickListen
         });
 
         questionIndex = 1;
+        answers = new Integer[10];
         configureGenderButton();
 
         return mView;
@@ -614,7 +615,6 @@ public class BilanMinceurActivity extends Fragment implements View.OnClickListen
         String page2FullContent = page2Content + " " + resultsData.NormalWeightContent.replace("<strong>", "").replace("</strong>", "").replace("<strong class=\"darken\">", "");
         Spannable spannablePage2Content = new SpannableString(page2FullContent);
         spannablePage2Content.setSpan(boldFont, page2FullContent.indexOf(resultsData.TargetWeight), page2Content.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannablePage2Content.setSpan(boldFont, page2FullContent.indexOf("compris entre") + 13, page2FullContent.indexOf(" kg. C'est donc"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         textViewResultPage2Content.setText(spannablePage2Content, TextView.BufferType.SPANNABLE);
 
         textViewCurrentWeight.setText(resultsData.CurrentWeight + " kg");
